@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,
+		initial-scale=1.0" />
+
+	<title>Digital Clock</title>
+
+	<style>
+		.live_watch {
+
+			background: rgb(46, 0, 228);
+			background: linear-gradient(31deg, rgb(137, 116, 222) 0%, rgba(58, 147, 209, 1) 100%);
+			background-size: cover;
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			height: 300px;
+			width: 600px;
+			border: 2px solid rgb(250, 249, 255);
+			border-radius: 15px;
+		}
+
+		#clock {
+			font-size: 55px;
+			width: 500px;
+			margin: 20px;
+			text-align: center;
+			border: 2px solid rgb(255, 255, 255);
+			color: white;
+			box-sizing: 200px;
+			border-radius: 15px;
+
+		}
+
+		#clock:hover {
+			background-color:gray;
+			color: black;
+			cursor:pointer;
+			
+		}
+	</style>
+</head>
+
+<body>
+	<div class="live_watch">
+		<div id="clock">8:10:45</div>
+
+	</div>
+	<script>
+		setInterval(showTime, 1000);
+		function showTime() {
+			let time = new Date();
+			let hour = time.getHours();
+			let min = time.getMinutes();
+			let sec = time.getSeconds();
+			am_pm = "AM";
+
+			if (hour > 12) {
+				hour -= 12;
+				am_pm = "PM";
+			}
+			if (hour == 0) {
+				hr = 12;
+				am_pm = "AM";
+			}
+
+			hour = hour < 10 ? "0" + hour : hour;
+			min = min < 10 ? "0" + min : min;
+			sec = sec < 10 ? "0" + sec : sec;
+
+			let currentTime = hour + ":"
+				+ min + ":" + sec + am_pm;
+
+			document.getElementById("clock")
+				.innerHTML = currentTime;
+		}
+
+		showTime();
+	</script>
+</body>
+
+</html>
